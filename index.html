@@ -73,17 +73,20 @@
 
         body {
             font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--text-primary);
             background: var(--bg-light);
             font-size: var(--mdc-typography-body1);
             letter-spacing: 0.15px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 var(--mdc-spacing-3);
+            padding: 0 var(--mdc-spacing-4);
         }
 
         /* Material Design Typography Scale */
@@ -270,7 +273,9 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: var(--mdc-elevation-2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .nav-tabs .container {
@@ -335,6 +340,8 @@
             padding: 0;
             display: none;
             box-shadow: var(--mdc-elevation-1);
+            width: 100%;
+            overflow: hidden;
         }
 
         .sub-nav-tabs.active {
@@ -345,14 +352,16 @@
             display: flex;
             gap: var(--mdc-spacing-1);
             padding: var(--mdc-spacing-2) var(--mdc-spacing-3);
+            flex-wrap: nowrap;
+            justify-content: flex-start;
         }
 
         .sub-nav-tab {
-            padding: var(--mdc-spacing-2) var(--mdc-spacing-3);
+            padding: var(--mdc-spacing-2) var(--mdc-spacing-2);
             background: white;
             border: 1px solid var(--border);
             border-radius: 4px 4px 0 0;
-            font-size: var(--mdc-typography-button);
+            font-size: 0.8rem;
             font-weight: 500;
             color: rgba(0, 0, 0, 0.6);
             cursor: pointer;
@@ -361,15 +370,21 @@
             position: relative;
             overflow: hidden;
             text-transform: uppercase;
-            letter-spacing: 1.25px;
+            letter-spacing: 0.9px;
             min-height: 48px;
+            flex: 1 1 0;
             display: flex;
             align-items: center;
             justify-content: center;
             white-space: nowrap;
-            flex-shrink: 0;
+            min-width: 0;
             word-wrap: break-word;
             overflow-wrap: break-word;
+        }
+
+        .sub-nav-tab i {
+            margin-right: 6px;
+            font-size: 0.9em;
         }
 
         .sub-nav-tab::before {
@@ -465,25 +480,47 @@
         /* Hero Section - Material Design Card */
         .case-hero {
             background: white;
-            border-radius: 4px;
-            padding: var(--mdc-spacing-6);
-            margin-bottom: var(--mdc-spacing-5);
-            box-shadow: var(--mdc-elevation-1);
-            transition: box-shadow 0.3s var(--mdc-standard-easing);
+            border-radius: 8px;
+            padding: var(--mdc-spacing-7) var(--mdc-spacing-6);
+            margin-bottom: var(--mdc-spacing-6);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s var(--mdc-standard-easing);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s var(--mdc-standard-easing);
         }
 
         .case-hero:hover {
-            box-shadow: var(--mdc-elevation-4);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15), 0 4px 10px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .case-hero:hover::before {
+            opacity: 1;
         }
 
         .case-hero h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 24px;
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 600;
+            margin-bottom: var(--mdc-spacing-4);
             color: var(--text-primary);
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: var(--mdc-spacing-3);
+            line-height: 1.25;
+            letter-spacing: -0.02em;
         }
 
         .case-hero .icon {
@@ -519,25 +556,44 @@
 
         .stat-card {
             background: white;
-            padding: var(--mdc-spacing-3);
-            border-radius: 4px;
-            box-shadow: var(--mdc-elevation-1);
+            padding: var(--mdc-spacing-4) var(--mdc-spacing-3);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
             text-align: center;
-            transition: transform 0.2s var(--mdc-standard-easing), box-shadow 0.2s var(--mdc-standard-easing);
+            transition: all 0.3s var(--mdc-standard-easing);
             overflow: hidden;
             word-wrap: break-word;
             overflow-wrap: break-word;
             cursor: pointer;
-            border: none;
+            border: 1px solid rgba(0, 0, 0, 0.04);
             min-height: 140px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s var(--mdc-standard-easing);
         }
 
         .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--mdc-elevation-4);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .stat-card:hover::after {
+            transform: scaleX(1);
         }
 
         .stat-card .icon {
@@ -555,17 +611,22 @@
         }
 
         .stat-card .value {
-            font-size: clamp(24px, 3.5vw, 32px);
-            font-weight: 400;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
             color: var(--primary);
-            margin-bottom: var(--mdc-spacing-1);
+            margin-bottom: var(--mdc-spacing-2);
             word-wrap: break-word;
             overflow-wrap: break-word;
-            line-height: 1.2;
+            line-height: 1.1;
             max-width: 100%;
             box-sizing: border-box;
             white-space: nowrap;
             padding: 0 var(--mdc-spacing-1);
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .stat-card .label {
@@ -582,16 +643,18 @@
         /* Content Sections */
         .content-section {
             background: white;
-            border-radius: 16px;
-            padding: 48px;
-            margin-bottom: 40px;
-            box-shadow: var(--mdc-elevation-2);
-            transition: box-shadow 0.3s var(--mdc-standard-easing), transform 0.3s var(--mdc-standard-easing);
+            border-radius: 8px;
+            padding: var(--mdc-spacing-6) var(--mdc-spacing-5);
+            margin-bottom: var(--mdc-spacing-5);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s var(--mdc-standard-easing);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
         }
 
         .content-section:hover {
-            box-shadow: var(--mdc-elevation-8);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
+            transform: translateY(-1px);
         }
 
         .content-section h3 {
@@ -670,17 +733,36 @@
         .solution-card {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: var(--mdc-spacing-4);
-            border-radius: 4px;
-            box-shadow: var(--mdc-elevation-2);
-            transition: box-shadow 0.2s var(--mdc-standard-easing);
+            padding: var(--mdc-spacing-5);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25), 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s var(--mdc-standard-easing);
             cursor: pointer;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s var(--mdc-standard-easing);
         }
 
         .solution-card:hover {
-            box-shadow: var(--mdc-elevation-4);
+            box-shadow: 0 12px 24px rgba(99, 102, 241, 0.35), 0 4px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .solution-card:hover::before {
+            opacity: 1;
         }
 
         .solution-card h4 {
@@ -878,20 +960,40 @@
 
         .trait-card {
             background: white;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: var(--mdc-spacing-3);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            padding: var(--mdc-spacing-4);
             text-align: center;
-            transition: transform 0.2s var(--mdc-standard-easing), box-shadow 0.2s var(--mdc-standard-easing);
-            box-shadow: var(--mdc-elevation-1);
+            transition: all 0.3s var(--mdc-standard-easing);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
             cursor: pointer;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            position: relative;
+        }
+
+        .trait-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 8px 8px 0 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s var(--mdc-standard-easing);
         }
 
         .trait-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--mdc-elevation-4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .trait-card:hover::before {
+            transform: scaleX(1);
         }
 
         .trait-card .icon {
@@ -954,14 +1056,39 @@
 
         .value-card {
             background: white;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: var(--mdc-spacing-3);
-            transition: all 0.2s var(--mdc-standard-easing);
-            box-shadow: var(--mdc-elevation-1);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            padding: var(--mdc-spacing-4);
+            transition: all 0.3s var(--mdc-standard-easing);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
             cursor: pointer;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            position: relative;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 8px 8px 0 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s var(--mdc-standard-easing);
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .value-card:hover::before {
+            transform: scaleX(1);
         }
 
         .value-card:hover {
@@ -1197,14 +1324,39 @@
 
         .strength-card {
             background: white;
-            border: 1px solid var(--success);
-            border-radius: 4px;
-            padding: var(--mdc-spacing-3);
-            transition: all 0.2s var(--mdc-standard-easing);
-            box-shadow: var(--mdc-elevation-1);
+            border: 2px solid var(--success);
+            border-radius: 8px;
+            padding: var(--mdc-spacing-4);
+            transition: all 0.3s var(--mdc-standard-easing);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
             cursor: pointer;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            position: relative;
+        }
+
+        .strength-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--success), #059669);
+            border-radius: 8px 8px 0 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s var(--mdc-standard-easing);
+        }
+
+        .strength-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(16, 185, 129, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-color: var(--success);
+        }
+
+        .strength-card:hover::before {
+            transform: scaleX(1);
         }
 
         .strength-card:hover {
@@ -1352,12 +1504,16 @@
             }
 
             .sub-nav-tabs .container {
-                flex-wrap: wrap;
+                padding: var(--mdc-spacing-2) var(--mdc-spacing-2);
+                gap: var(--mdc-spacing-1);
             }
 
             .sub-nav-tab {
-                flex: 1;
-                min-width: 150px;
+                font-size: 0.7rem;
+                padding: var(--mdc-spacing-2) var(--mdc-spacing-2);
+                letter-spacing: 0.8px;
+                flex: 1 1 0;
+                min-width: 0;
             }
 
             .profile-header {
@@ -1431,16 +1587,16 @@
     <nav class="sub-nav-tabs" id="caerphilly-sub-nav">
         <div class="container">
             <button class="sub-nav-tab active" onclick="showSubCaseStudy(1)">
-                <i class="fas fa-cloud"></i> Digital Platform Migration
+                <i class="fas fa-cloud"></i> Housing
             </button>
             <button class="sub-nav-tab" onclick="showSubCaseStudy(2)">
                 <i class="fas fa-lightbulb"></i> Vision & Workshop Facilitation
             </button>
             <button class="sub-nav-tab" onclick="showSubCaseStudy(3)">
-                <i class="fas fa-school"></i> Schools Cloud Migration
+                <i class="fas fa-school"></i> Schools
             </button>
             <button class="sub-nav-tab" onclick="showSubCaseStudy(4)">
-                <i class="fas fa-heartbeat"></i> Occupational Health Migration
+                <i class="fas fa-heartbeat"></i> Occupational Health
             </button>
         </div>
     </nav>
