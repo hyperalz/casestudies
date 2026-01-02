@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies - Product & Transformation Leadership</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-light);
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            background: white;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-tabs .container {
+            display: flex;
+            gap: 8px;
+            padding: 0 24px;
+        }
+
+        .nav-tab {
+            padding: 20px 32px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-tab:hover {
+            color: var(--primary);
+            background: var(--bg-light);
+        }
+
+        .nav-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Case Study Section */
+        .case-study {
+            display: none;
+            padding: 60px 0;
+        }
+
+        .case-study.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .case-hero {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .case-hero h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .case-hero .icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+        }
+
+        .case-hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-card .icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-card .label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .content-section h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-section h3 i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .content-section p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        /* Challenge List */
+        .challenge-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .challenge-list li {
+            padding: 20px;
+            margin-bottom: 16px;
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: start;
+            gap: 16px;
+        }
+
+        .challenge-list li i {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Solution Grid */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .solution-card h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .solution-card h4 i {
+            font-size: 1.5rem;
+        }
+
+        .solution-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        /* Results Grid */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .result-item {
+            background: var(--bg-light);
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .result-item:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .result-item .icon {
+            width: 48px;
+            height: 48px;
+            background: var(--secondary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .result-item h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .result-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 5px solid var(--accent);
+            padding: 24px 32px;
+            border-radius: 8px;
+            margin: 32px 0;
+        }
+
+        .highlight-box p {
+            color: #92400e;
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin: 0;
+        }
+
+        /* Key Takeaways */
+        .takeaways {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 5px solid var(--primary);
+            padding: 32px;
+            border-radius: 12px;
+            margin-top: 32px;
+        }
+
+        .takeaways h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .takeaways p {
+            color: #1e40af;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 32px 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .case-hero, .content-section {
+                padding: 32px 24px;
+            }
+
+            .nav-tabs .container {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .nav-tab {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-briefcase"></i> Case Studies</h1>
+            <p>Product & Transformation Leadership in Complex Environments</p>
+        </div>
+    </header>
+
+    <nav class="nav-tabs">
+        <div class="container">
+            <button class="nav-tab active" onclick="showCaseStudy(1)">
+                <i class="fas fa-shopping-cart"></i> Ocado Technology
+            </button>
+            <button class="nav-tab" onclick="showCaseStudy(2)">
+                <i class="fas fa-chart-line"></i> Investec Bank
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Case Study 1: Ocado -->
+        <div id="case-study-1" class="case-study active">
+            <div class="case-hero" data-aos="fade-up">
+                <h2>
+                    <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                    Transforming Ocado Technology from Project to Product Management
+                </h2>
+                <p>I was Ocado Technology's first Product hire. My job was to shift the organisation from a project-based model to a product-led approach, which enabled the launch of the Ocado Smart Platform (OSP). The platform combines automation, AI, and data science across online grocery operations: e-commerce, supply chain, fulfilment, and last-mile delivery. Today it powers 13 global partners across 25+ sites.</p>
+            </div>
+
+            <div class="stats-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-globe"></i></div>
+                    <div class="value">13</div>
+                    <div class="label">Global Partners</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-building"></i></div>
+                    <div class="value">25+</div>
+                    <div class="label">Live Sites</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-store"></i></div>
+                    <div class="value">1,000+</div>
+                    <div class="label">Stores Powered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-percentage"></i></div>
+                    <div class="value">99.4%</div>
+                    <div class="label">Order Accuracy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="value">70M</div>
+                    <div class="label">Daily Forecasts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-calculator"></i></div>
+                    <div class="value">100M</div>
+                    <div class="label">Calculations/sec</div>
+                </div>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <h3><i class="fas fa-info-circle"></i> Background</h3>
+                <p>Ocado Technology has been building online grocery solutions for over 25 years. The Ocado Smart Platform (OSP) is their end-to-end solution that uses automation, AI, and data science across the entire online grocery operation, from e-commerce and supply chain to fulfilment and delivery.</p>
+                <p>Retailers can pick and choose which OSP components they need. The platform does over 70 million supply chain calculations daily to keep availability high and accuracy tight. Right now it's running operations for 13 partners across 25 live sites and 1,000+ stores, hitting 99.4% order accuracy with NPS scores of 75–80% for partners in 2024.</p>
+                <p>When I joined in 2013, Ocado Technology was at a turning point. They needed to move from project-based work to a product-led approach, and they were growing fast with international expansion on the horizon. I was their first Product hire, coming in as Product Owner and Product Operations lead reporting to the General Manager. The company had 600+ software developers and 22 Product Owners running three legacy systems, all while trying to replatform everything into what became OSP, a modular platform for both online-only and omnichannel grocery retail.</p>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <h3><i class="fas fa-exclamation-triangle"></i> Challenge</h3>
+                <p>Ocado needed to shift from internal project management to a product-centric culture to support global expansion. The main challenges were:</p>
+                <ul class="challenge-list">
+                    <li>
+                        <i class="fas fa-server"></i>
+                        <div>
+                            <strong>Maintaining legacy systems</strong> while building a new platform that would eventually encompass 59 interconnected applications.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <strong>Aligning a large, distributed team</strong> around agile practices, with resistance to change from traditional methods.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-pound-sign"></i>
+                        <div>
+                            <strong>Mitigating a £50m risk</strong> to their first international client by ensuring the nascent OSP was battle-tested in real-world scenarios, without passing on unproven elements.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-handshake"></i>
+                        <div>
+                            <strong>Fostering collaboration</strong> across departments, coaching inexperienced Product Owners, and establishing an operational roadmap amid ambiguity and high-stakes delivery pressures.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-rocket"></i>
+                        <div>
+                            <strong>Balancing innovation with empirical feedback</strong> to drive continuous improvement, all while scaling to support hyper-efficient operations. This included automated Customer Fulfilment Centres (CFCs) that could simulate 270 years of operations in just 12 months, requiring sophisticated modelling and validation approaches.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <strong>Ensuring platform reliability</strong> for mission-critical operations where system failures could impact millions of customer orders, requiring rigorous testing, monitoring, and failover capabilities across the entire platform stack.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <h3><i class="fas fa-lightbulb"></i> Solution</h3>
+                <p>I led the cultural and operational shift by:</p>
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <h4><i class="fas fa-chalkboard-teacher"></i> Coaching & Mentoring</h4>
+                        <p>I pushed the move from project to product management, coaching 20+ Product Owners through communities of practice, workshops, and one-on-ones. Also mentored Heads of Department and IT Team Leads on agile practices and product thinking.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h4><i class="fas fa-route"></i> Strategic Direction & Lifecycle Management</h4>
+                        <p>I set the strategic direction for the platform and managed the replatforming while keeping legacy systems running. That meant handling planning, scope, budget, risks, and issues across multiple workstreams that all depended on each other.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h4><i class="fas fa-flask"></i> Internal Startup & Dogfooding</h4>
+                        <p>I set up an internal "startup" within Ocado Technology, basically a fake retailer so we could "eat our own dog food." This let us test OSP in real-world conditions before it was ready, getting actual feedback without risking our first international client. That safe space was crucial for managing the £50m risk.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h4><i class="fas fa-tasks"></i> Agile Practices & Ways of Working</h4>
+                        <p>I rolled out Scrum and Kanban across product and project delivery, focusing on transparency and continuous discovery. Set up communities of practice and regular workshops to get these practices embedded. Had to work through a lot of resistance from people used to traditional project management.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h4><i class="fas fa-map"></i> Operational Roadmap</h4>
+                        <p>I built and delivered an operational roadmap that matched business goals, using Impact Mapping, BDD, and OKRs to figure out what to prioritise.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <h3><i class="fas fa-trophy"></i> Results</h3>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-check-circle"></i></div>
+                        <h4>Platform Launch</h4>
+                        <p>Successfully launched OSP, preventing the £50m risk transfer to the first client and enabling Ocado to become a platform business.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-users-cog"></i></div>
+                        <h4>Team Transformation</h4>
+                        <p>I coached teams to use product-led practices, which sped up delivery and innovation. Ocado Retail became consistently profitable and grew faster than anyone else in the UK.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-expand-arrows-alt"></i></div>
+                        <h4>Platform Scale & Innovation</h4>
+                        <p>We scaled the platform to 59 interconnected applications, handling 10 billion daily product predictions. Ocado Technology now has 2,500+ technologists and 3,000+ patents, an IP portfolio 10 times bigger than the entire UK grocery industry.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-chart-line"></i></div>
+                        <h4>Business Value</h4>
+                        <p>Delivered measurable business value: High NPS scores (75–80% for partners in 2024), reduced substitutions, and a partnership model with dedicated expert support.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-award"></i></div>
+                        <h4>Awards & Recognition</h4>
+                        <p>Ocado Retail achieved awards like Online Service of the Year at The Grocer Gold Awards (July 2025).</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-cogs"></i></div>
+                        <h4>Operational Excellence</h4>
+                        <p>We hit 98% on-time dispatch, kept waste down to 0.49%, and run 100 million optimisation calculations per second. The platform's AI supply chain tools keep availability high and costs low.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="takeaways" data-aos="fade-up">
+                <h4><i class="fas fa-key"></i> Key Takeaways</h4>
+                <p>This work showed me how powerful agile and product thinking can be in large-scale, mission-critical environments. Creating that safe experimentation space (the internal startup) and focusing on real feedback helped us manage the £50m client risk and move faster. It also reinforced my approach to leading without authority: building teams through coaching, communities of practice, and collaboration. The cultural and mindset shifts mattered just as much as the technical changes. OSP's success today, powering global retailers with market-leading efficiency, shows that investing early in product thinking, agile practices, and real-world validation pays off in platform businesses.</p>
+            </div>
+        </div>
+
+        <!-- Case Study 2: Investec -->
+        <div id="case-study-2" class="case-study">
+            <div class="case-hero" data-aos="fade-up">
+                <h2>
+                    <span class="icon"><i class="fas fa-chart-line"></i></span>
+                    Building Investec Bank's FX and Hedging Analytics Platform from the Ground Up
+                </h2>
+                <p>I was part of the senior leadership team leading product transformation to build a modern FX and Hedging Analytics Platform from scratch. This was a greenfield project in a complex, regulated banking environment. We modernised legacy operations that ran on manual processes and spreadsheets, building currency management, dynamic hedging, and risk analytics for corporate clients. The work led to Best Business FX Provider awards in 2024 and 2025.</p>
+            </div>
+
+            <div class="stats-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-users"></i></div>
+                    <div class="value">7→30</div>
+                    <div class="label">Team Growth</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="value">4</div>
+                    <div class="label">Months to Replatform</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-clock"></i></div>
+                    <div class="value">12</div>
+                    <div class="label">Weeks for Savings Account</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-award"></i></div>
+                    <div class="value">2024-25</div>
+                    <div class="label">Best Business FX Provider</div>
+                </div>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <h3><i class="fas fa-info-circle"></i> Background</h3>
+                <p>Investec Bank is a specialist bank offering Treasury and Risk Management solutions, including Corporate FX services to help businesses manage currency volatility, hedging, and international payments. Their digital platform, Investec ix, includes FX analytics for 24-hour position oversight, dynamic hedging to automate programs, online trading, and global payment execution.</p>
+                <p>Investec won Best Business FX Provider in the MoneyFacts Awards (2024 and 2025) and Best FX Trading Platform in 2025 from Global Finance Magazine. They combine high-touch dealer support with analytics to deliver clear insights, risk modelling, and operational efficiency for businesses dealing with financial uncertainty.</p>
+                <p>I joined Investec in 2017 as a Consultant in Product-Led Transformation and Delivery for Corporate & Investment Banking. We built a new team with its own P&L to create a modern FX and Hedging Analytics Platform from scratch. The goal was to replace legacy operations that ran on manual processes, spreadsheets, and siloed systems. This had to happen in a complex, regulated banking environment where innovation needs to work alongside strict compliance.</p>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <h3><i class="fas fa-exclamation-triangle"></i> Challenge</h3>
+                <p>Investec needed to modernise FX and hedging operations as demand grew for faster, more efficient risk management. The main challenges were:</p>
+                <ul class="challenge-list">
+                    <li>
+                        <i class="fas fa-sync-alt"></i>
+                        <div>
+                            <strong>Replatforming an outdated estate</strong> that ran on manual processes, spreadsheets, and siloed systems. This slowed everything down and increased operational risk.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-user-plus"></i>
+                        <div>
+                            <strong>Growing the team from 7 to 30</strong> while getting agile processes into a traditional banking culture that didn't want to change.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-laptop-code"></i>
+                        <div>
+                            <strong>Building a client-facing platform</strong> for corporate FX, hedging analytics, and payments, with tools for dynamic hedging, risk modelling, and international transactions.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-tachometer-alt"></i>
+                        <div>
+                            <strong>Moving fast in a regulated environment</strong>. We built a Business Savings account in 12 weeks with 12 people. Goldman Sachs took 2 years with 200+ developers. This meant shifting from "prototyping addiction" to actually shipping production code.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-balance-scale"></i>
+                        <div>
+                            <strong>Working through ambiguity in a high-stakes sector</strong>, balancing regulatory compliance with innovation, and getting traditionally siloed teams to collaborate on continuous delivery. This took persistent "messy" change work: breaking old patterns, challenging assumptions, and building momentum through diagrams, governance structures, and multi-stream channels.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <h3><i class="fas fa-lightbulb"></i> Solution</h3>
+                <p>As part of the senior leadership team, I led product and delivery. Here's what we did:</p>
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <h4><i class="fas fa-project-diagram"></i> Agile Processes</h4>
+                        <p>I rolled out agile product development processes, built cross-functional teams, and coached on continuous discovery and empiricism using Scrum, Kanban, and BDD.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h4><i class="fas fa-user-tie"></i> Team Growth & Development</h4>
+                        <p>I led hiring and grew the team from 7 to 30, mentoring on agile practices and product thinking. Pushed an Open API strategy to improve collaboration and break down silos, building a culture of continuous learning in a traditionally hierarchical banking environment.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h4><i class="fas fa-sync"></i> Rapid Replatforming</h4>
+                        <p>I led the complete replatforming of the entire estate in 4 months, a tight timeline for a regulated environment. We moved low-value trades online, turned complex manual structuring work from spreadsheets into software, and kept client operations running throughout.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h4><i class="fas fa-chart-bar"></i> Client-Collaborative Features</h4>
+                        <p>I delivered features like the Hedging Analytics tool by working closely with clients. This enabled dynamic hedging to cut operational work and provide 24-hour FX position oversight. The client-centric approach meant we built what they actually needed while staying compliant.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h4><i class="fas fa-rocket"></i> Continuous Delivery</h4>
+                        <p>I implemented Continuous Delivery to speed up releases, while managing end-to-end lifecycle including planning, risks, and stakeholder alignment.</p>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <p><i class="fas fa-star"></i> Replatformed entire estate in 4 months</p>
+                </div>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <h3><i class="fas fa-trophy"></i> Results</h3>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-check-circle"></i></div>
+                        <h4>Platform Launch</h4>
+                        <p>We replatformed the estate in 4 months and launched the client-facing FX and Hedging Analytics Platform, modernising legacy operations and enabling seamless currency management.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-tools"></i></div>
+                        <h4>Innovative Platform Features</h4>
+                        <p>We delivered tools including dynamic hedging, FX analytics, online trading, and global payments. These improved risk visibility, enabled proactive risk identification, and made operations more efficient for corporate clients managing currency exposure.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-bolt"></i></div>
+                        <h4>Rapid Delivery</h4>
+                        <p>We built a Business Savings account in 12 weeks, showing we could move fast and beat industry benchmarks.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-users-cog"></i></div>
+                        <h4>High-Performing Team</h4>
+                        <p>We built a high-performing team that adopted agile practices, leading to faster releases, better collaboration, and recognition for Investec's award-winning FX services.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-chart-line"></i></div>
+                        <h4>Business Outcomes</h4>
+                        <p>We improved business outcomes through proactive risk identification, clear insights that non-financial professionals can understand, and integrated services that combine FX expertise with broader banking capabilities. The platform lets businesses control their hedging strategies while getting expert support.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="icon"><i class="fas fa-award"></i></div>
+                        <h4>Award Recognition</h4>
+                        <p>Best Business FX Provider in the MoneyFacts Awards (2024 and 2025), showing the platform's success and market leadership.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="takeaways" data-aos="fade-up">
+                <h4><i class="fas fa-key"></i> Key Takeaways</h4>
+                <p>This work showed me the value of blending high-touch leadership with digital innovation in regulated environments. By focusing on cultural transformation through persistent coaching, cross-functional teams, and empirical processes, we turned ambiguity into competitive advantage and delivered value faster than industry benchmarks. The "messy" change work was critical: breaking old patterns, challenging traditional banking culture, and building collaboration despite stretch goals. This built resilient, high-performing teams that work well in complex situations. The Best Business FX Provider (2024-2025) and Best FX Trading Platform (2025) awards show that cultural shifts, combined with technical excellence, create real competitive advantages in regulated sectors.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS after DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ 
+                    duration: 800, 
+                    once: true,
+                    offset: 100
+                });
+            }
+        });
+
+        // Case study navigation
+        function showCaseStudy(num) {
+            // Hide all case studies
+            document.querySelectorAll('.case-study').forEach(study => {
+                study.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected case study
+            document.getElementById(`case-study-${num}`).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
