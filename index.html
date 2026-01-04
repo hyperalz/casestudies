@@ -1571,6 +1571,9 @@
             <button class="nav-tab active" onclick="showCaseStudy('profile')">
                 <i class="fas fa-user"></i> Profile
             </button>
+            <button class="nav-tab" onclick="showCaseStudy('executive-summary')">
+                <i class="fas fa-file-alt"></i> Executive Summary
+            </button>
             <button class="nav-tab" onclick="showCaseStudy(1)">
                 <i class="fas fa-shopping-cart"></i> Ocado Technology
             </button>
@@ -1956,6 +1959,36 @@
             <div class="takeaways" data-aos="fade-up">
                 <h4><i class="fas fa-question-circle"></i> Ready to Connect?</h4>
                 <p>Ready to connect on fostering resilient, thriving teams?</p>
+            </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div id="case-study-executive-summary" class="case-study">
+            <div class="case-hero" data-aos="fade-up">
+                <h2>
+                    <span class="icon"><i class="fas fa-file-alt"></i></span>
+                    Transformation Director: People-First Approach, Relentless Results
+                </h2>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">Alex delivers product-led transformations that unlock stalled progress in high-stakes, regulated, or complex organisations. He enters constrained environments facing resistance, legacy systems, or ambitious goals, and creates rapid alignment through short, focused interventions.</p>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">He builds psychological safety first, removing hierarchy and fostering inclusive collaboration so teams contribute openly and link daily work to real business or human outcomes. He leads through influence, balancing empathy with disciplined execution to challenge assumptions, quantify benefits, and drive evidence-based decisions.</p>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">CEOs value his ability to mitigate major risks (£50m client exposure averted at Ocado), deliver multi-million savings (£2–3m from Caerphilly housing migration), secure industry awards (Investec FX platform wins), and achieve 100% success in large-scale rollouts (85 schools, occupational health system).</p>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">Alex turns cultural shifts into sustained advantage, scaling platforms globally (Ocado Smart Platform serving 13 partners), boosting capacity 50% in public services, and building MVPs at a fraction of market costs (£35k vs £1m for Shoogle app).</p>
+            </div>
+
+            <div class="content-section" data-aos="fade-up">
+                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">He is the calm, resilient Transformation Director who grounds ambitious change in people, then executes relentlessly to produce measurable competitive edge and social impact.</p>
             </div>
         </div>
 
@@ -2973,6 +3006,8 @@
             // Show selected case study
             if (num === 'profile') {
                 document.getElementById('case-study-profile').classList.add('active');
+            } else if (num === 'executive-summary') {
+                document.getElementById('case-study-executive-summary').classList.add('active');
             } else {
                 document.getElementById(`case-study-${num}`).classList.add('active');
             }
