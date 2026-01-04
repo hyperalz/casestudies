@@ -283,23 +283,40 @@
             gap: var(--mdc-spacing-1);
             padding: 0 var(--mdc-spacing-3);
             align-items: stretch;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
+        }
+
+        .nav-tabs .container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .nav-tabs .container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .nav-tabs .container::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
         }
 
         .nav-tab {
-            padding: 20px 32px;
+            padding: 16px 24px;
             background: none;
             border: none;
             border-bottom: 4px solid transparent;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-secondary);
             cursor: pointer;
             transition: all 0.3s var(--mdc-standard-easing);
             position: relative;
             overflow: hidden;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .nav-tab::before {
@@ -1967,28 +1984,72 @@
             <div class="case-hero" data-aos="fade-up">
                 <h2>
                     <span class="icon"><i class="fas fa-file-alt"></i></span>
-                    Transformation Director: People-First Approach, Relentless Results
+                    Transformation Director: people-first approach, relentless results
                 </h2>
+                <p style="font-size: 1.125rem; line-height: 1.8; margin-top: var(--mdc-spacing-3);">Alex delivers product-led transformations that unlock stalled progress in high-stakes, regulated, or complex organisations. He enters constrained environments facing resistance, legacy systems, or ambitious goals, and creates rapid alignment through short, focused interventions.</p>
+            </div>
+
+            <div class="stats-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-sync-alt"></i></div>
+                    <div class="value">2</div>
+                    <div class="label">Inhouse Agile and Product Transformations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="value">£50m</div>
+                    <div class="label">Risk Averted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-user-graduate"></i></div>
+                    <div class="value">000's</div>
+                    <div class="label">Coached and Mentored</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-server"></i></div>
+                    <div class="value">2</div>
+                    <div class="label">Highly Complex Platforms Built from Scratch</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="value">1</div>
+                    <div class="label">Digital Service Built</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="value" style="font-size: clamp(14px, 2vw, 20px); white-space: normal; line-height: 1.2;">Months to Mins</div>
+                    <div class="label">Rate of Learning</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="value" style="font-size: clamp(20px, 3vw, 28px);">£35k</div>
+                    <div class="label">Native App & Platform (£1m Quote)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-clock"></i></div>
+                    <div class="value" style="font-size: clamp(14px, 2vw, 20px); white-space: normal; line-height: 1.2;">Years to Months</div>
+                    <div class="label">Delivery</div>
+                </div>
             </div>
 
             <div class="content-section" data-aos="fade-up">
-                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">Alex delivers product-led transformations that unlock stalled progress in high-stakes, regulated, or complex organisations. He enters constrained environments facing resistance, legacy systems, or ambitious goals, and creates rapid alignment through short, focused interventions.</p>
+                <h3><i class="fas fa-users"></i> Approach</h3>
+                <p>He builds psychological safety first, removing hierarchy and fostering inclusive collaboration so teams contribute openly and link daily work to real business or human outcomes. He leads through influence, balancing empathy with disciplined execution to challenge assumptions, quantify benefits, and drive evidence-based decisions.</p>
             </div>
 
             <div class="content-section" data-aos="fade-up">
-                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">He builds psychological safety first, removing hierarchy and fostering inclusive collaboration so teams contribute openly and link daily work to real business or human outcomes. He leads through influence, balancing empathy with disciplined execution to challenge assumptions, quantify benefits, and drive evidence-based decisions.</p>
+                <h3><i class="fas fa-star"></i> CEO Value</h3>
+                <p>CEOs value his ability to mitigate major risks (£50m client exposure averted at Ocado), deliver multi-million savings (£2–3m from Caerphilly housing migration), secure industry awards (Investec FX platform wins), and achieve 100% success in large-scale rollouts (85 schools, occupational health system).</p>
             </div>
 
             <div class="content-section" data-aos="fade-up">
-                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">CEOs value his ability to mitigate major risks (£50m client exposure averted at Ocado), deliver multi-million savings (£2–3m from Caerphilly housing migration), secure industry awards (Investec FX platform wins), and achieve 100% success in large-scale rollouts (85 schools, occupational health system).</p>
+                <h3><i class="fas fa-rocket"></i> Impact</h3>
+                <p>Alex turns cultural shifts into sustained advantage, scaling platforms globally (Ocado Smart Platform serving 13 partners), boosting capacity 50% in public services, and building MVPs at a fraction of market costs (£35k vs £1m for Shoogle app).</p>
             </div>
 
-            <div class="content-section" data-aos="fade-up">
-                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">Alex turns cultural shifts into sustained advantage, scaling platforms globally (Ocado Smart Platform serving 13 partners), boosting capacity 50% in public services, and building MVPs at a fraction of market costs (£35k vs £1m for Shoogle app).</p>
-            </div>
-
-            <div class="content-section" data-aos="fade-up">
-                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">He is the calm, resilient Transformation Director who grounds ambitious change in people, then executes relentlessly to produce measurable competitive edge and social impact.</p>
+            <div class="highlight-box" data-aos="fade-up" style="margin-top: var(--mdc-spacing-4);">
+                <h4><i class="fas fa-quote-left"></i> The Transformation Director</h4>
+                <p style="font-size: 1.125rem; line-height: 1.8; margin: 0;">He is the calm, resilient Transformation Director who grounds ambitious change in people, then executes relentlessly to produce measurable competitive edge and social impact.</p>
             </div>
         </div>
 
@@ -2810,7 +2871,7 @@
                 </div>
                 <div class="stat-card">
                     <div class="icon"><i class="fas fa-mobile-alt"></i></div>
-                    <div class="value">iOS/Android</div>
+                    <div class="value" style="font-size: clamp(18px, 2.5vw, 24px);">iOS/Android</div>
                     <div class="label">Platform Delivery</div>
                 </div>
                 <div class="stat-card">
@@ -2965,7 +3026,13 @@
 
             <div class="takeaways" data-aos="fade-up">
                 <h4><i class="fas fa-key"></i> Key Takeaways</h4>
-                <p>This project demonstrated that with the right approach, innovative platforms can be delivered at a fraction of traditional vendor costs. The £35k delivery (versus £1m quotes) proved the value of lean, agile ways of working, remote near-shore teams, and comprehensive product leadership. Four months of qualitative user research provided deep insights into hidden needs and what truly motivates employees, informing features that emphasised connection over mere measurement. The exploitation of Large Language Models for data insights and automation created a scalable solution that could extract meaning from pulses, identify hotspots, and provide automated interventions. The end-to-end product leadership approach—covering research, strategy, planning, scope, budget, and risk—ensured comprehensive ownership despite limited resources. Frequent communication, transparency, and a one team approach fostered alignment in a lean setup, enabling quick refinements. The project showed that open leadership that encourages vulnerability and connections can mirror the app's ethos, boosting motivation and enabling proactive prevention over reactive care. This approach positioned Shoogle for scale-up in a $34.2B market, with strong projected financials demonstrating sustainable commercial potential.</p>
+                <p style="margin-bottom: 16px;">The Shoogle project showed that a capable wellbeing platform can reach market for far less than traditional vendor estimates. Built for £35,000 against quotes of £1 million, the app emerged from four months of lean agile development, supported by a small remote near-shore team and full-cycle product leadership.</p>
+                <p style="margin-bottom: 16px;">Extensive qualitative research uncovered what employees often keep hidden and what actually drives their motivation. Features shifted from simple tracking to fostering genuine connection.</p>
+                <p style="margin-bottom: 16px;">Large language models handled data analysis and automation, enabling the system to interpret pulse responses, spot emerging issues, and suggest targeted interventions.</p>
+                <p style="margin-bottom: 16px;">Product leadership spanned research, strategy, planning, scoping, budgeting, and risk management, maintaining control within tight constraints.</p>
+                <p style="margin-bottom: 16px;">Regular updates and transparent collaboration kept the compact team aligned and allowed rapid adjustments.</p>
+                <p style="margin-bottom: 16px;">Leadership that welcomed openness and personal disclosure mirrored the app's own purpose, strengthening team motivation and shifting focus toward prevention rather than reaction.</p>
+                <p>The result positions Shoogle to enter a $34.2 billion market with solid projected finances and clear commercial viability.</p>
             </div>
         </div>
     </main>
