@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
     <style>
         :root {
             --primary: #2563eb;
@@ -171,20 +172,36 @@
         /* Sub Case Study Section */
         .sub-case-study {
             display: none;
+            /* Performance: Use visibility for hidden content */
+            visibility: hidden;
+            position: absolute;
+            width: 100%;
+            left: -9999px;
         }
 
         .sub-case-study.active {
             display: block;
+            visibility: visible;
+            position: relative;
+            left: 0;
         }
 
         /* Case Study Section */
         .case-study {
             display: none;
             padding: 60px 0;
+            /* Performance: Use visibility for hidden content */
+            visibility: hidden;
+            position: absolute;
+            width: 100%;
+            left: -9999px;
         }
 
         .case-study.active {
             display: block;
+            visibility: visible;
+            position: relative;
+            left: 0;
         }
 
         /* Profile Section */
@@ -281,6 +298,22 @@
         .stat-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
+        }
+
+        /* Performance: Optimize animations with will-change */
+        .stat-card,
+        .content-section,
+        .value-card,
+        .trait-card,
+        .solution-card {
+            will-change: transform;
+        }
+
+        .stat-card:hover,
+        .value-card:hover,
+        .trait-card:hover,
+        .solution-card:hover {
+            will-change: transform, box-shadow;
         }
 
         .stat-card .icon {
@@ -2650,79 +2683,111 @@
         </div>
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
     <script>
-        // Initialize AOS after DOM is ready
+        // Initialize AOS after DOM is ready - optimized for performance
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof AOS !== 'undefined') {
+                const isMobile = window.innerWidth < 768;
                 AOS.init({ 
-                    duration: 800, 
+                    duration: isMobile ? 400 : 600, 
                     once: true,
-                    offset: 100
+                    offset: isMobile ? 50 : 100,
+                    delay: 0,
+                    disable: isMobile, // Disable on mobile for better performance
+                    useClassNames: false,
+                    debounceDelay: 50,
+                    throttleDelay: 99
                 });
-
             }
         });
 
-        // Case study navigation
+        // Case study navigation - optimized for performance
         function showCaseStudy(num) {
-            // Hide all case studies
-            document.querySelectorAll('.case-study').forEach(study => {
-                study.classList.remove('active');
+            // Use requestAnimationFrame for smoother transitions
+            requestAnimationFrame(() => {
+                // Hide all case studies
+                document.querySelectorAll('.case-study').forEach(study => {
+                    study.classList.remove('active');
+                });
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('.nav-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Show/hide sub-nav based on case study
+                const subNav = document.getElementById('caerphilly-sub-nav');
+                if (num === 3) {
+                    subNav.classList.add('active');
+                } else {
+                    subNav.classList.remove('active');
+                }
+                
+                // Show selected case study
+                let activeStudy;
+                if (num === 'profile') {
+                    activeStudy = document.getElementById('case-study-profile');
+                } else if (num === 'executive-summary') {
+                    activeStudy = document.getElementById('case-study-executive-summary');
+                } else {
+                    activeStudy = document.getElementById(`case-study-${num}`);
+                }
+                
+                if (activeStudy) {
+                    activeStudy.classList.add('active');
+                    // Refresh AOS for newly visible content
+                    if (typeof AOS !== 'undefined') {
+                        setTimeout(() => AOS.refresh(), 100);
+                    }
+                }
+                
+                // If Caerphilly, show first sub-case-study
+                if (num === 3) {
+                    showSubCaseStudy(1);
+                }
+                
+                // Add active class to clicked tab
+                if (event && event.target) {
+                    event.target.classList.add('active');
+                }
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-            
-            // Remove active class from all tabs
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show/hide sub-nav based on case study
-            const subNav = document.getElementById('caerphilly-sub-nav');
-            if (num === 3) {
-                subNav.classList.add('active');
-            } else {
-                subNav.classList.remove('active');
-            }
-            
-            // Show selected case study
-            if (num === 'profile') {
-                document.getElementById('case-study-profile').classList.add('active');
-            } else {
-                document.getElementById(`case-study-${num}`).classList.add('active');
-            }
-            
-            // If Caerphilly, show first sub-case-study
-            if (num === 3) {
-                showSubCaseStudy(1);
-            }
-            
-            // Add active class to clicked tab
-            event.target.classList.add('active');
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Sub-case study navigation
+        // Sub-case study navigation - optimized for performance
         function showSubCaseStudy(num) {
-            // Hide all sub-case studies
-            document.querySelectorAll('.sub-case-study').forEach(study => {
-                study.classList.remove('active');
+            requestAnimationFrame(() => {
+                // Hide all sub-case studies
+                document.querySelectorAll('.sub-case-study').forEach(study => {
+                    study.classList.remove('active');
+                });
+                
+                // Remove active class from all sub-tabs
+                document.querySelectorAll('.sub-nav-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Show selected sub-case study
+                const activeSubStudy = document.getElementById(`sub-case-3-${num}`);
+                if (activeSubStudy) {
+                    activeSubStudy.classList.add('active');
+                    // Refresh AOS for newly visible content
+                    if (typeof AOS !== 'undefined') {
+                        setTimeout(() => AOS.refresh(), 100);
+                    }
+                }
+                
+                // Add active class to clicked sub-tab
+                if (event && event.target) {
+                    event.target.classList.add('active');
+                }
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-            
-            // Remove active class from all sub-tabs
-            document.querySelectorAll('.sub-nav-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show selected sub-case study
-            document.getElementById(`sub-case-3-${num}`).classList.add('active');
-            
-            // Add active class to clicked sub-tab
-            event.target.classList.add('active');
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
