@@ -13,12 +13,12 @@
     <style>
         :root {
             /* Vibrant Modern Color Palette - More Engaging */
-            --primary: #6366f1; /* Indigo - vibrant, modern, tech-forward */
-            --primary-dark: #4f46e5; /* Deep indigo - sophisticated depth */
-            --primary-light: #818cf8; /* Light indigo - for hover states */
+            --primary: #1e40af; /* Dark blue - corporate, professional, trustworthy */
+            --primary-dark: #1e3a8a; /* Deep blue - sophisticated depth */
+            --primary-light: #3b82f6; /* Light blue - for hover states */
             --secondary: #06b6d4; /* Cyan - fresh, dynamic, energetic */
             --secondary-dark: #0891b2; /* Deep cyan */
-            --accent: #ec4899; /* Pink - warm, engaging, modern */
+            --accent: #1e3a8a; /* Dark blue - corporate, professional */
             --accent-orange: #f97316; /* Orange - energetic complement */
             --success: #10b981; /* Green - success states */
             --text-primary: #0f172a; /* Slate - warmer than pure black */
@@ -39,7 +39,7 @@
             --mdc-elevation-12: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12);
             /* Material Design Easing */
             --mdc-standard-easing: cubic-bezier(0.4, 0, 0.2, 1);
-            --mdc-ripple-color: rgba(99, 102, 241, 0.12);
+            --mdc-ripple-color: rgba(30, 64, 175, 0.12);
             /* Material Design 8dp Grid System */
             --mdc-spacing-1: 8px;
             --mdc-spacing-2: 16px;
@@ -126,7 +126,7 @@
 
         /* Header - Material Design App Bar Style - Enhanced */
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, #4338ca 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, #1e3a8a 100%);
             color: white;
             padding: var(--mdc-spacing-8) 0 var(--mdc-spacing-7);
             text-align: center;
@@ -159,7 +159,7 @@
             right: -10%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(30, 58, 138, 0.15) 0%, transparent 70%);
             border-radius: 50%;
             animation: float 15s ease-in-out infinite;
         }
@@ -203,7 +203,8 @@
             text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             animation: fadeInUp 0.8s ease-out;
             position: relative;
-            display: inline-block;
+            display: block;
+            text-align: center;
         }
 
         header h1::after {
@@ -241,7 +242,7 @@
             font-size: 0.9em;
             display: inline-block;
             animation: iconPulse 2s ease-in-out infinite;
-            filter: drop-shadow(0 2px 8px rgba(236, 72, 153, 0.4));
+            filter: drop-shadow(0 2px 8px rgba(30, 58, 138, 0.4));
         }
 
         @keyframes iconPulse {
@@ -1199,7 +1200,7 @@
         }
 
         .core-value-item.high-priority {
-            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
             border-color: var(--primary);
         }
 
@@ -1238,7 +1239,7 @@
         }
 
         .rating-fill.high {
-            background: linear-gradient(90deg, var(--primary-dark), #4338ca);
+            background: linear-gradient(90deg, var(--primary-dark), #1e3a8a);
         }
 
         .rating-number {
@@ -1283,7 +1284,7 @@
 
         .disc-dimension.high {
             border-color: var(--primary);
-            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
         }
 
         .disc-dimension.moderate {
@@ -1578,7 +1579,7 @@
 <body>
     <header>
         <div class="container">
-            <h1><i class="fas fa-briefcase"></i> Case Studies</h1>
+            <h1>Case Studies</h1>
             <p>Product & Transformation Leadership in Complex Environments</p>
         </div>
     </header>
